@@ -1,0 +1,137 @@
+@font-face {
+	font-family: 'Typewriter';
+	src: url(../FONTS/RobsTypewriter-Regular.ttf);
+}
+
+@font-face {
+	font-family: 'NikeBrandbe';
+	src: url(../FONTS/BrandbeExtraBold.otf);
+}
+
+* {
+	margin: 0%;
+	padding: 0%;
+	font-family: 'NikeBrandbe';
+}
+
+body {
+/*	background: linear-gradient(#dadada, #808080 , #dadada) no-repeat;*/
+}
+
+#primitiva {
+	text-align: center;
+}
+
+#navBar {
+	background-color: #dadada;
+/*	background-color: #7083f1;*/
+	font-size: 30px;
+	width: 100%;
+	margin: auto;
+}
+
+#navBar ul {
+	text-align: center;
+	padding: 10px;
+}
+
+#navBar li {
+	display: inline-block;
+	margin-left: 20px;
+}
+
+#acerca a {
+	color: #474747;
+	text-decoration: none;
+	transition: all 500ms;
+}
+
+#acerca a:hover {
+	color: darkgray;
+	text-shadow: 	0 0 10px #fff,
+					0 0 20px #fff,
+					0 0 30px #fff;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.wip a {
+	color: #474747;
+	text-decoration: none;
+	transition: all 500ms;
+}
+
+.wip a:hover {
+	color: indianred;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.horizontal {
+	margin-top: 10px;
+	height: 2px;
+	background-color: #dadada;
+	border: none;
+}
+
+article {
+	text-align: center;
+}
+
+section {
+	width: 40%;
+	margin: auto;
+}
+
+.tituloApuesta {
+	font-size: 60px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+section div {
+	align-content: center;
+	display: inline-block;
+	/* FUNCIONA, pero no aplica display: inline-block;
+	background-color: black;	
+	*/
+}
+
+.oval {
+	font-size: 30px;
+	border-radius: 20px;
+	padding: 5px;
+	margin: 5px;
+	width: 30%;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+#buttons {
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#add {
+	font-family: Typewriter;
+	font-size: 35px;
+	background-color: #dadada;
+	border: none;
+	border-radius: 50px;
+	padding: 10px 20px;
+	width: 60px;
+  	height: 60px;
+}
+
+#minus {
+  font-family: Typewriter;
+  font-size: 35px;
+  background-color: #dadada;
+  border: none;
+  border-radius: 50%;
+  padding: 10px 20px;
+  width: 60px;
+  height: 60px;
+  vertical-align: center;
+}
