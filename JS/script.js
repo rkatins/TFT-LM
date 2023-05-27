@@ -125,6 +125,21 @@ function fQuitar() {
 
 		contadorSecciones--;
 	}
+
+	var etiquetaExiste = document.getElementById('add');
+	if (contadorSecciones == 2 && etiquetaExiste == null) {
+		var botones = document.getElementById('buttons');
+
+		// Crear un nuevo elemento button en la etiqueta con id = buttons
+		var nuevaTAG = document.createElement("button");
+		// Agregar atributos a la etiqueta creada previmente
+		nuevaTAG.setAttribute("id", "add");
+		nuevaTAG.setAttribute("onClick", "fAgnadir(); fComprobarEliminarADD()");
+		// Cambiar el contenido, no su atributo value
+		nuevaTAG.innerText = "+";
+
+		botones.appendChild(nuevaTAG);
+	}
 }
 
 function fComprobarEliminarADD() {
