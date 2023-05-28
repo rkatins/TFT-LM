@@ -29,50 +29,6 @@ function fIntroducidoErroneo(input) {
 	}
 }
 
-function fComprobarRepetidos(input) {
-	var valores = new Array;
-
-	var elementoMIN = 0;
-	var elementoMAX = 0;
-
-	// Convertir el ID a un número entero, en base 10
-	var id = parseInt(input.id, 10);
-
-	if (1 >= id && id <= 6) {
-		elementoMIN = 1;
-		elementoMAX = 6;
-	} else if (7 >= id && id <= 12) {
-		elementoMIN = 7;
-		elementoMAX = 12;
-	} else if (13 >= id && id <= 18) {
-		elementoMIN = 13;
-		elementoMAX = 18;
-	} else if (19 >= id && id <= 24) {
-		elementoMIN = 19;
-		elementoMAX = 24;
-	} else if (25 >= id && id <= 30) {
-		elementoMIN = 25;
-		elementoMAX = 30;
-	} else if (31 >= id && id <= 36) {
-		elementoMIN = 31;
-		elementoMAX = 36;
-	}
-
-	for (var i = elementoMIN; i <= elementoMAX; i++) {
-		var valor = document.getElementById(i).value;			
-		
-		if (isNaN(valor)) {
-			valores[i] = 0;
-		} else {
-			// Agregar el valor al array
-			valores.push(valor);
-		}
-	}
-
-	if (valores.includes(input.value)) {
-		alert("Valor ya escrito en la apuesta");
-	}
-}
 
 function fAgnadir() {
 	var apuestaElement = document.getElementById("apuesta");
@@ -86,14 +42,16 @@ function fAgnadir() {
 	    var clase = "oval apuesta" + contadorSecciones;
 
 	    nuevaTAG.innerHTML +=
+	    	'<hr class="horizontal">'+
 	        '<h1 class="tituloApuesta">APUESTA ' + contadorSecciones + '</h1>' +
-	        '<div><input type="text" class="' + clase + '" placeholder="Num1" onblur="fIntroducidoErroneo(this); fComprobarRepetidos(this)" style="display: inline-block"></div>' +
-	        '<div><input type="text" class="' + clase + '" placeholder="Num2" onblur="fIntroducidoErroneo(this); fComprobarRepetidos(this)" style="display: inline-block"></div>' +
-	        '<div><input type="text" class="' + clase + '" placeholder="Num3" onblur="fIntroducidoErroneo(this); fComprobarRepetidos(this)" style="display: inline-block"></div>' +
-	        '<div><input type="text" class="' + clase + '" placeholder="Num4" onblur="fIntroducidoErroneo(this); fComprobarRepetidos(this)" style="display: inline-block"></div>' +
-	        '<div><input type="text" class="' + clase + '" placeholder="Num5" onblur="fIntroducidoErroneo(this); fComprobarRepetidos(this)" style="display: inline-block"></div>' +
-	        '<div><input type="text" class="' + clase + '" placeholder="Num6" onblur="fIntroducidoErroneo(this); fComprobarRepetidos(this)" style="display: inline-block"></div>';
-
+	        '<div><input type="text" class="' + clase + '" placeholder="Num1" onblur="fIntroducidoErroneo(this)" style="display: inline-block"></div>' +
+	        '<div><input type="text" class="' + clase + '" placeholder="Num2" onblur="fIntroducidoErroneo(this)" style="display: inline-block"></div>' +
+	        '<div><input type="text" class="' + clase + '" placeholder="Num3" onblur="fIntroducidoErroneo(this)" style="display: inline-block"></div>' +
+	        '<div><input type="text" class="' + clase + '" placeholder="Num4" onblur="fIntroducidoErroneo(this)" style="display: inline-block"></div>' +
+	        '<div><input type="text" class="' + clase + '" placeholder="Num5" onblur="fIntroducidoErroneo(this)" style="display: inline-block"></div>' +
+	        '<div><input type="text" class="' + clase + '" placeholder="Num6" onblur="fIntroducidoErroneo(this)" style="display: inline-block"></div>' +
+	        '<br><br>' +
+	        '<button class="oval btnComprobar">COMPROBAR</button>';
 	    // Agregar el nuevo elemento al elemento padre (apuestaElement)
 	    apuestaElement.appendChild(nuevaTAG);
 
@@ -102,7 +60,7 @@ function fAgnadir() {
 
 	var etiquetaExiste = document.getElementById('minus');
 	if (contadorSecciones >= 3 && etiquetaExiste == null) {
-		var botones = document.getElementById('buttons');
+		var contenedoBTN = document.getElementById('buttons');
 
 		// Crear un nuevo elemento button en la etiqueta con id = buttons
 		var nuevaTAG = document.createElement("button");
@@ -112,7 +70,7 @@ function fAgnadir() {
 		// Cambiar el contenido, no su atributo value
 		nuevaTAG.innerText = "-";
 
-		botones.appendChild(nuevaTAG);
+		contenedoBTN.appendChild(nuevaTAG);
 	}
 }
 
@@ -127,8 +85,8 @@ function fQuitar() {
 	}
 
 	var etiquetaExiste = document.getElementById('add');
-	if (contadorSecciones == 2 && etiquetaExiste == null) {
-		var botones = document.getElementById('buttons');
+	if (contadorSecciones >= 2 && etiquetaExiste == null) {
+		var contenedoBTN = document.getElementById('buttons');
 
 		// Crear un nuevo elemento button en la etiqueta con id = buttons
 		var nuevaTAG = document.createElement("button");
@@ -138,22 +96,67 @@ function fQuitar() {
 		// Cambiar el contenido, no su atributo value
 		nuevaTAG.innerText = "+";
 
-		botones.appendChild(nuevaTAG);
+		contenedoBTN.appendChild(nuevaTAG);
 	}
 }
 
-function fComprobarEliminarADD() {
-  var buttonADD = document.getElementById('add');
+function fComprobarEliminarADD(boton) {
+	var buttonADD = document.getElementById('add');
 
-  if (contadorSecciones == 7) {
-    buttonADD.remove();
-  }
+	if (contadorSecciones == 7) {
+	buttonADD.remove();
+	}
 }
 
-function fComprobarEliminarMINUS() {
-  var buttonMINUS = document.getElementById('minus');
+function fComprobarEliminarMINUS(boton) {
+	var buttonMINUS = document.getElementById('minus');
+	// var buttonMINUS = boton.id; NO FUNCIONA
 
-  if (contadorSecciones == 2) {
-    buttonMINUS.remove();
-  }
+	if (contadorSecciones == 2) {
+	buttonMINUS.remove();
+	}
+
+	/*
+	if (contadorSecciones == 6) {
+		var claseContenedor = boton.parentNode.id;
+		boton.setAttribute("id", "add");
+		boton.setAttribute("onClick", "fAgnadir(); fComprobarEliminarADD()");
+
+	// Crear un nuevo elemento button en la etiqueta con id = buttons
+	var nuevaTAG = document.createElement("button");
+	// Agregar atributos a la etiqueta creada previmente
+	nuevaTAG.setAttribute("id", "minus");
+	nuevaTAG.setAttribute("onClick", "fQuitar(); fComprobarEliminarMINUS()");
+	// Cambiar el contenido, no su atributo value
+	nuevaTAG.innerText = "-";
+
+
+		contenedoBTN.appendChild(nuevaTAG);
+	}
+
+	if (contadorSecciones == 5) {
+		var claseContenedor = botones.parentNode.id;
+		var sectionContenedor = document.getElementById(claseContenedor);
+		var etiquetasHijas = Array.from(sectionContenedor.getElementsByTagName('button'));
+		
+		padreEtiqueta1.appendChild(etiquetasHijas[1]);
+		padreEtiqueta1.appendChild(etiquetasHijas[0]);
+	}
+	*/
 }
+
+function btnComprobar(boton) {
+	// Obtener el id de la clase padre a la que pertenece el boton ejecutador de la funcion
+	var claseContenedor = boton.parentNode.id;
+	var sectionContenedor = document.getElementById(claseContenedor);
+	var etiquetasHijas = Array.from(sectionContenedor.getElementsByTagName('input'));
+
+	for (var i = 0; i < etiquetasHijas.length; i++) {
+		console.log("valor de " + i + "-> " + parseInt(etiquetasHijas[i].value));
+	}
+}
+
+
+
+
+
