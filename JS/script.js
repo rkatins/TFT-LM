@@ -1,5 +1,20 @@
 // Variables globales
 var contadorSecciones = 2;
+var combinacion1 = new Array(6);
+var combinacion2 = new Array(6);
+var combinacion3 = new Array(6);
+var combinacion4 = new Array(6);
+var combinacion5 = new Array(6);
+var combinacion6 = new Array(6);
+
+function fCargaPagina() {
+	combinacion1 = fAleatorio();
+	combinacion2 = fAleatorio();
+	combinacion3 = fAleatorio();
+	combinacion4 = fAleatorio();
+	combinacion5 = fAleatorio();
+	combinacion6 = fAleatorio();
+}
 
 function fAleatorio() {
 	var nAleatorios = new Array(6);
@@ -11,9 +26,11 @@ function fAleatorio() {
 	return nAleatorios;
 }
 
-function fBorrarContenidoEjemplo(input) {
-	if (input.value == "Num1" || input.value == "Num2" || input.value == "Num3" || input.value == "Num4" || input.value == "Num5" || input.value == "Num6") {
-		input.value = '';
+function fBorrarContenido(input) {
+var valorModificado = parseFloat(input.value);
+	if (valorModificado <= 0 || valorModificado >= 50 || isNaN(valorModificado)) {
+		input.style.backgroundColor = "white";
+		input.style.boxShadow = '';
 	}
 }
 
@@ -120,10 +137,11 @@ function fComprobarEliminarMINUS(boton) {
 	}
 }
 
+var nAleatorios = new Array(6);
 function btnComprobar(boton) {
 	alert("Rojo -> Numero incorrecto\nAmarillo -> Numero repetido o no se ha introducido valor alguno\nVerde -> Numero en la lista");
 	
-	var nAleatorios = new Array(6);
+	
 	nAleatorios = fAleatorio();
 	
 	// Obtener el id de la clase padre a la que pertenece el boton ejecutador de la funcion
@@ -143,9 +161,30 @@ function btnComprobar(boton) {
 		} else if (parseInt(etiquetasHijas[i].value) <= 1 || parseInt(etiquetasHijas[i].value) <= 49) {
 			etiquetasHijas[i].style.backgroundColor = "#79e630";
 			etiquetasHijas[i].style.boxShadow = "0 0 10px #79e630, 0 0 20px #79e630, 0 0 30px #ffffff";
-		} else {
-			etiquetasHijas[i].style.backgroundColor = "white";
-			etiquetasHijas[i].style.boxShadow = '';
 		}
+	}
+
+	for (var i = 0; i < combinacion1.length; i++) {
+		console.log("combinacion1 -> " + parseInt(combinacion1[i]))
+	}
+
+	for (var i = 0; i < combinacion2.length; i++) {
+		console.log("combinacion2 -> " + parseInt(combinacion2[i]))
+	}
+
+	for (var i = 0; i < combinacion3.length; i++) {
+		console.log("combinacion3 -> " + parseInt(combinacion3[i]))
+	}
+
+	for (var i = 0; i < combinacion4.length; i++) {
+		console.log("combinacion4 -> " + parseInt(combinacion4[i]))
+	}
+
+	for (var i = 0; i < combinacion5.length; i++) {
+		console.log("combinacion5 -> " + parseInt(combinacion5[i]))
+	}
+
+	for (var i = 0; i < combinacion6.length; i++) {
+		console.log("combinacion6 -> " + parseInt(combinacion6[i]))
 	}
 }
