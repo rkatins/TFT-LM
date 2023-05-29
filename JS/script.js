@@ -17,18 +17,19 @@ function fBorrarContenidoEjemplo(input) {
 	}
 }
 
+// En des-uso
 function fIntroducidoErroneo(input) {
-	var valorModificado = parseFloat(input.value);
+// 	var valorModificado = parseFloat(input.value);
 
-	if (input.value == '' || valorModificado <= 0 || valorModificado >= 50) {
-		input.style.backgroundColor = "#ff9999";
-		input.style.boxShadow = "0 0 10px #ff9999, 0 0 20px #ff9999, 0 0 30px #ff0000";
+// 	if (input.value == '' || valorModificado <= 0 || valorModificado >= 50) {
+// 		input.style.backgroundColor = "#ff9999";
+// 		input.style.boxShadow = "0 0 10px #ff9999, 0 0 20px #ff9999, 0 0 30px #ff0000";
 
 
-	} else {
-		input.style.backgroundColor = "white";
-		input.style.boxShadow = '';
-	}
+// 	} else {
+// 		input.style.backgroundColor = "white";
+// 		input.style.boxShadow = '';
+// 	}
 }
 
 
@@ -53,7 +54,7 @@ function fAgnadir() {
 	        '<div><input type="text" class="' + clase + '" placeholder="Num5" onblur="fIntroducidoErroneo(this)" style="display: inline-block"></div>' +
 	        '<div><input type="text" class="' + clase + '" placeholder="Num6" onblur="fIntroducidoErroneo(this)" style="display: inline-block"></div>' +
 	        '<br><br>' +
-	        '<button class="oval btnComprobar">COMPROBAR</button>';
+	        '<button class="oval btnComprobar" onclick="btnComprobar(this)">COMPROBAR</button>';
 	    // Agregar el nuevo elemento al elemento padre (apuestaElement)
 	    apuestaElement.appendChild(nuevaTAG);
 
@@ -132,37 +133,10 @@ function fComprobarEliminarMINUS(boton) {
 
 		contenedoBTN.appendChild(nuevaTAG);
 	}
-
-	/*
-	if (contadorSecciones == 5) {
-		var claseContenedor = boton.parentNode.id;
-		boton.setAttribute("id", "add");
-		boton.setAttribute("onClick", "fAgnadir(); fComprobarEliminarADD()");
-
-	// Crear un nuevo elemento button en la etiqueta con id = buttons
-	var nuevaTAG = document.createElement("button");
-	// Agregar atributos a la etiqueta creada previmente
-	nuevaTAG.setAttribute("id", "minus");
-	nuevaTAG.setAttribute("onClick", "fQuitar(); fComprobarEliminarMINUS()");
-	// Cambiar el contenido, no su atributo value
-	nuevaTAG.innerText = "-";
-
-
-		contenedoBTN.appendChild(nuevaTAG);
-	}
-
-	if (contadorSecciones == 5) {
-		var claseContenedor = botones.parentNode.id;
-		var sectionContenedor = document.getElementById(claseContenedor);
-		var etiquetasHijas = Array.from(sectionContenedor.getElementsByTagName('button'));
-		
-		padreEtiqueta1.appendChild(etiquetasHijas[1]);
-		padreEtiqueta1.appendChild(etiquetasHijas[0]);
-	}
-	*/
 }
 
 function btnComprobar(boton) {
+	alert("Rojo -> Numero incorrecto\nAmarillo -> Numero repetido o no se ha introducido valor alguno");
 	// Obtener el id de la clase padre a la que pertenece el boton ejecutador de la funcion
 	var claseContenedor = boton.parentNode.id;
 	var sectionContenedor = document.getElementById(claseContenedor);
@@ -170,10 +144,20 @@ function btnComprobar(boton) {
 
 	for (var i = 0; i < etiquetasHijas.length; i++) {
 		console.log("valor de " + i + "-> " + parseInt(etiquetasHijas[i].value));
+
+		if (isNaN(parseInt(etiquetasHijas[i].value))) {
+			console.log("Valor mo valido");
+
+			etiquetasHijas[i].style.backgroundColor = "#f5d742";
+			etiquetasHijas[i].style.boxShadow = "0 0 10px #f5d742, 0 0 20px #f5d742, 0 0 30px #ff0000";
+		} else 	if (etiquetasHijas[i].value == '' || parseInt(etiquetasHijas[i].value) <= 0 || parseInt(etiquetasHijas[i].value) >= 50) {
+			etiquetasHijas[i].style.backgroundColor = "#ff9999";
+			etiquetasHijas[i].style.boxShadow = "0 0 10px #ff9999, 0 0 20px #ff9999, 0 0 30px #ff0000";
+
+
+		} else {
+			etiquetasHijas[i].style.backgroundColor = "white";
+			etiquetasHijas[i].style.boxShadow = '';
+		}
 	}
 }
-
-
-
-
-
