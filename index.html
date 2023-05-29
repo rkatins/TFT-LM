@@ -7,7 +7,7 @@
 
 	<link rel="stylesheet" href="./CSS/style.css">
 	<script src="./JS/script.js"></script>
-<body>
+<body onload="fCargaPagina()">
 	<header>
 		<div id="navBar">
 			<ul>
@@ -25,12 +25,12 @@
 	<article id="apuesta">
 		<section id="seccion1">
 			<h1 class="tituloApuesta">APUESTA 1</h1>
-			<div><input type="text" class="oval apuesta1" placeholder="Num1"></div>
-			<div><input type="text" class="oval apuesta1" placeholder="Num2"></div>
-			<div><input type="text" class="oval apuesta1" placeholder="Num3"></div>
-			<div><input type="text" class="oval apuesta1" placeholder="Num4"></div>
-			<div><input type="text" class="oval apuesta1" placeholder="Num5"></div>
-			<div><input type="text" class="oval apuesta1" placeholder="Num6"></div>
+			<div><input type="text" class="oval apuesta1" placeholder="Num1" onclick="fBorrarContenido(this)"></div>
+			<div><input type="text" class="oval apuesta1" placeholder="Num2" onclick="fBorrarContenido(this)"></div>
+			<div><input type="text" class="oval apuesta1" placeholder="Num3" onclick="fBorrarContenido(this)"></div>
+			<div><input type="text" class="oval apuesta1" placeholder="Num4" onclick="fBorrarContenido(this)"></div>
+			<div><input type="text" class="oval apuesta1" placeholder="Num5" onclick="fBorrarContenido(this)"></div>
+			<div><input type="text" class="oval apuesta1" placeholder="Num6" onclick="fBorrarContenido(this)"></div>
 			<br><br>
 	        <button class="oval btnComprobar" onclick="btnComprobar(this)">COMPROBAR</button>
 		</section>
