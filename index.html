@@ -1,6 +1,3 @@
-<!-- utiliza una interfaz amigable aplicando estilos de CSS para realizar la siguiente página, con JS realiza una página que genere la combinacion de la primitiva que queremos apostar y despues compruebe los aciertos que tenemos, para ello nos pediran cuantas combinaciones queremos apostar (un numero entre 1 y 6) y generear numeros entre 1 y 49 sin repetir para cada combinacion cuando el usuario pulse el boton apostar
-Cuando el usuario pulse el boton comprobar se mostrararn los 6 numeros ganadores (6 numeros al azar sin repetir) y debe mostrar el numero de aciertos que tenemos en cada una de las combinaciones apostadas -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,12 +25,14 @@ Cuando el usuario pulse el boton comprobar se mostrararn los 6 numeros ganadores
 	<article id="apuesta">
 		<section id="seccion1">
 			<h1 class="tituloApuesta">APUESTA 1</h1>
-			<div><input type="text" class="oval apuesta1" placeholder="Num1" onblur="fIntroducidoErroneo(this); fComprobarRepetidos(this)"></div>
-			<div><input type="text" class="oval apuesta1" placeholder="Num2" onblur="fIntroducidoErroneo(this); fComprobarRepetidos(this)"></div>
-			<div><input type="text" class="oval apuesta1" placeholder="Num3" onblur="fIntroducidoErroneo(this); fComprobarRepetidos(this)"></div>
-			<div><input type="text" class="oval apuesta1" placeholder="Num4" onblur="fIntroducidoErroneo(this); fComprobarRepetidos(this)"></div>
-			<div><input type="text" class="oval apuesta1" placeholder="Num5" onblur="fIntroducidoErroneo(this); fComprobarRepetidos(this)"></div>
-			<div><input type="text" class="oval apuesta1" placeholder="Num6" onblur="fIntroducidoErroneo(this); fComprobarRepetidos(this)"></div>
+			<div><input type="text" class="oval apuesta1" placeholder="Num1"></div>
+			<div><input type="text" class="oval apuesta1" placeholder="Num2"></div>
+			<div><input type="text" class="oval apuesta1" placeholder="Num3"></div>
+			<div><input type="text" class="oval apuesta1" placeholder="Num4"></div>
+			<div><input type="text" class="oval apuesta1" placeholder="Num5"></div>
+			<div><input type="text" class="oval apuesta1" placeholder="Num6"></div>
+			<br><br>
+	        <button class="oval btnComprobar" onclick="btnComprobar(this)">COMPROBAR</button>
 		</section>
 	</article>
 
