@@ -23,6 +23,8 @@ function fIntroducidoErroneo(input) {
 	if (input.value == '' || valorModificado <= 0 || valorModificado >= 50) {
 		input.style.backgroundColor = "#ff9999";
 		input.style.boxShadow = "0 0 10px #ff9999, 0 0 20px #ff9999, 0 0 30px #ff0000";
+
+
 	} else {
 		input.style.backgroundColor = "white";
 		input.style.boxShadow = '';
@@ -104,7 +106,7 @@ function fComprobarEliminarADD(boton) {
 	var buttonADD = document.getElementById('add');
 
 	if (contadorSecciones == 7) {
-	buttonADD.remove();
+		buttonADD.remove();
 	}
 }
 
@@ -112,12 +114,27 @@ function fComprobarEliminarMINUS(boton) {
 	var buttonMINUS = document.getElementById('minus');
 	// var buttonMINUS = boton.id; NO FUNCIONA
 
-	if (contadorSecciones == 2) {
-	buttonMINUS.remove();
+	if (contadorSecciones == 2 || contadorSecciones == 6) {
+		buttonMINUS.remove();
+	}
+
+	var etiquetaExiste = document.getElementById('minus');
+	if (contadorSecciones == 6 && etiquetaExiste == null) {
+		var contenedoBTN = document.getElementById('buttons');
+
+		// Crear un nuevo elemento button en la etiqueta con id = buttons
+		var nuevaTAG = document.createElement("button");
+		// Agregar atributos a la etiqueta creada previmente
+		nuevaTAG.setAttribute("id", "minus");
+		nuevaTAG.setAttribute("onClick", "fQuitar(); fComprobarEliminarMINUS()");
+		// Cambiar el contenido, no su atributo value
+		nuevaTAG.innerText = "-";
+
+		contenedoBTN.appendChild(nuevaTAG);
 	}
 
 	/*
-	if (contadorSecciones == 6) {
+	if (contadorSecciones == 5) {
 		var claseContenedor = boton.parentNode.id;
 		boton.setAttribute("id", "add");
 		boton.setAttribute("onClick", "fAgnadir(); fComprobarEliminarADD()");
