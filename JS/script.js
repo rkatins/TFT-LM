@@ -2,34 +2,19 @@
 var contadorSecciones = 2;
 
 function fAleatorio() {
-	var numeros = new Array(6);
+	var nAleatorios = new Array(6);
 
-	for (var i = 0; i < numeros.length; i++) {
-		numeros[i] = Math.floor(Math.random() * 49) + 1;
+	for (var i = 0; i < nAleatorios.length; i++) {
+		nAleatorios[i] = Math.floor(Math.random() * 49) + 1;
 	}
 
-	return numeros;
+	return nAleatorios;
 }
 
 function fBorrarContenidoEjemplo(input) {
 	if (input.value == "Num1" || input.value == "Num2" || input.value == "Num3" || input.value == "Num4" || input.value == "Num5" || input.value == "Num6") {
 		input.value = '';
 	}
-}
-
-// En des-uso
-function fIntroducidoErroneo(input) {
-// 	var valorModificado = parseFloat(input.value);
-
-// 	if (input.value == '' || valorModificado <= 0 || valorModificado >= 50) {
-// 		input.style.backgroundColor = "#ff9999";
-// 		input.style.boxShadow = "0 0 10px #ff9999, 0 0 20px #ff9999, 0 0 30px #ff0000";
-
-
-// 	} else {
-// 		input.style.backgroundColor = "white";
-// 		input.style.boxShadow = '';
-// 	}
 }
 
 
@@ -47,12 +32,12 @@ function fAgnadir() {
 	    nuevaTAG.innerHTML +=
 	    	'<hr class="horizontal">'+
 	        '<h1 class="tituloApuesta">APUESTA ' + contadorSecciones + '</h1>' +
-	        '<div><input type="text" class="' + clase + '" placeholder="Num1" onblur="fIntroducidoErroneo(this)" style="display: inline-block"></div>' +
-	        '<div><input type="text" class="' + clase + '" placeholder="Num2" onblur="fIntroducidoErroneo(this)" style="display: inline-block"></div>' +
-	        '<div><input type="text" class="' + clase + '" placeholder="Num3" onblur="fIntroducidoErroneo(this)" style="display: inline-block"></div>' +
-	        '<div><input type="text" class="' + clase + '" placeholder="Num4" onblur="fIntroducidoErroneo(this)" style="display: inline-block"></div>' +
-	        '<div><input type="text" class="' + clase + '" placeholder="Num5" onblur="fIntroducidoErroneo(this)" style="display: inline-block"></div>' +
-	        '<div><input type="text" class="' + clase + '" placeholder="Num6" onblur="fIntroducidoErroneo(this)" style="display: inline-block"></div>' +
+	        '<div><input type="text" class="' + clase + '" placeholder="Num1" style="display: inline-block"></div>' +
+	        '<div><input type="text" class="' + clase + '" placeholder="Num2" style="display: inline-block"></div>' +
+	        '<div><input type="text" class="' + clase + '" placeholder="Num3" style="display: inline-block"></div>' +
+	        '<div><input type="text" class="' + clase + '" placeholder="Num4" style="display: inline-block"></div>' +
+	        '<div><input type="text" class="' + clase + '" placeholder="Num5" style="display: inline-block"></div>' +
+	        '<div><input type="text" class="' + clase + '" placeholder="Num6" style="display: inline-block"></div>' +
 	        '<br><br>' +
 	        '<button class="oval btnComprobar" onclick="btnComprobar(this)">COMPROBAR</button>';
 	    // Agregar el nuevo elemento al elemento padre (apuestaElement)
@@ -136,7 +121,11 @@ function fComprobarEliminarMINUS(boton) {
 }
 
 function btnComprobar(boton) {
-	alert("Rojo -> Numero incorrecto\nAmarillo -> Numero repetido o no se ha introducido valor alguno");
+	alert("Rojo -> Numero incorrecto\nAmarillo -> Numero repetido o no se ha introducido valor alguno\nVerde -> Numero en la lista");
+	
+	var nAleatorios = new Array(6);
+	nAleatorios = fAleatorio();
+	
 	// Obtener el id de la clase padre a la que pertenece el boton ejecutador de la funcion
 	var claseContenedor = boton.parentNode.id;
 	var sectionContenedor = document.getElementById(claseContenedor);
@@ -146,15 +135,14 @@ function btnComprobar(boton) {
 		console.log("valor de " + i + "-> " + parseInt(etiquetasHijas[i].value));
 
 		if (isNaN(parseInt(etiquetasHijas[i].value))) {
-			console.log("Valor mo valido");
-
 			etiquetasHijas[i].style.backgroundColor = "#f5d742";
 			etiquetasHijas[i].style.boxShadow = "0 0 10px #f5d742, 0 0 20px #f5d742, 0 0 30px #ff0000";
 		} else 	if (etiquetasHijas[i].value == '' || parseInt(etiquetasHijas[i].value) <= 0 || parseInt(etiquetasHijas[i].value) >= 50) {
 			etiquetasHijas[i].style.backgroundColor = "#ff9999";
-			etiquetasHijas[i].style.boxShadow = "0 0 10px #ff9999, 0 0 20px #ff9999, 0 0 30px #ff0000";
-
-
+			etiquetasHijas[i].style.boxShadow = "0 0 10px #ff9999, 0 0 20px #ff9999, 0 0 30px #ffffff";
+		} else if (parseInt(etiquetasHijas[i].value) <= 1 || parseInt(etiquetasHijas[i].value) <= 49) {
+			etiquetasHijas[i].style.backgroundColor = "#79e630";
+			etiquetasHijas[i].style.boxShadow = "0 0 10px #79e630, 0 0 20px #79e630, 0 0 30px #ffffff";
 		} else {
 			etiquetasHijas[i].style.backgroundColor = "white";
 			etiquetasHijas[i].style.boxShadow = '';
