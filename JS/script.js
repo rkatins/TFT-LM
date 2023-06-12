@@ -1,20 +1,5 @@
 // Variables globales
 var contadorSecciones = 2;
-var combinacion1 = new Array(6);
-var combinacion2 = new Array(6);
-var combinacion3 = new Array(6);
-var combinacion4 = new Array(6);
-var combinacion5 = new Array(6);
-var combinacion6 = new Array(6);
-
-function fCargaPagina() {
-	combinacion1 = fAleatorio();
-	combinacion2 = fAleatorio();
-	combinacion3 = fAleatorio();
-	combinacion4 = fAleatorio();
-	combinacion5 = fAleatorio();
-	combinacion6 = fAleatorio();
-}
 
 function fAleatorio() {
 	var nAleatorios = new Array(6);
@@ -27,7 +12,8 @@ function fAleatorio() {
 }
 
 function fBorrarContenido(input) {
-var valorModificado = parseFloat(input.value);
+	var valorModificado = parseFloat(input.value);
+
 	if (valorModificado <= 0 || valorModificado >= 50 || isNaN(valorModificado)) {
 		input.style.backgroundColor = "white";
 		input.style.boxShadow = '';
@@ -49,14 +35,15 @@ function fAgnadir() {
 	    nuevaTAG.innerHTML +=
 	    	'<hr class="horizontal">'+
 	        '<h1 class="tituloApuesta">APUESTA ' + contadorSecciones + '</h1>' +
-	        '<div><input type="text" class="' + clase + '" placeholder="Num1" style="display: inline-block"></div>' +
-	        '<div><input type="text" class="' + clase + '" placeholder="Num2" style="display: inline-block"></div>' +
-	        '<div><input type="text" class="' + clase + '" placeholder="Num3" style="display: inline-block"></div>' +
-	        '<div><input type="text" class="' + clase + '" placeholder="Num4" style="display: inline-block"></div>' +
-	        '<div><input type="text" class="' + clase + '" placeholder="Num5" style="display: inline-block"></div>' +
-	        '<div><input type="text" class="' + clase + '" placeholder="Num6" style="display: inline-block"></div>' +
+	        '<div><input type="text" class="' + clase + '" placeholder="Num1" onclick="fBorrarContenido(this)"></div>' +
+	        '<div><input type="text" class="' + clase + '" placeholder="Num2" onclick="fBorrarContenido(this)"></div>' +
+	        '<div><input type="text" class="' + clase + '" placeholder="Num3" onclick="fBorrarContenido(this)"></div>' +
+	        '<div><input type="text" class="' + clase + '" placeholder="Num4" onclick="fBorrarContenido(this)"></div>' +
+	        '<div><input type="text" class="' + clase + '" placeholder="Num5" onclick="fBorrarContenido(this)"></div>' +
+	        '<div><input type="text" class="' + clase + '" placeholder="Num6" onclick="fBorrarContenido(this)"></div>' +
 	        '<br><br>' +
-	        '<button class="oval btnComprobar" onclick="btnComprobar(this)">COMPROBAR</button>';
+	        '<button class="oval btnComprobar" onclick="btnComprobar(this)">COMPROBAR</button>' +
+	        '<p id="aleatorios' + contadorSecciones + '"></p>';
 	    // Agregar el nuevo elemento al elemento padre (apuestaElement)
 	    apuestaElement.appendChild(nuevaTAG);
 
@@ -162,29 +149,5 @@ function btnComprobar(boton) {
 			etiquetasHijas[i].style.backgroundColor = "#79e630";
 			etiquetasHijas[i].style.boxShadow = "0 0 10px #79e630, 0 0 20px #79e630, 0 0 30px #ffffff";
 		}
-	}
-
-	for (var i = 0; i < combinacion1.length; i++) {
-		console.log("combinacion1 -> " + parseInt(combinacion1[i]))
-	}
-
-	for (var i = 0; i < combinacion2.length; i++) {
-		console.log("combinacion2 -> " + parseInt(combinacion2[i]))
-	}
-
-	for (var i = 0; i < combinacion3.length; i++) {
-		console.log("combinacion3 -> " + parseInt(combinacion3[i]))
-	}
-
-	for (var i = 0; i < combinacion4.length; i++) {
-		console.log("combinacion4 -> " + parseInt(combinacion4[i]))
-	}
-
-	for (var i = 0; i < combinacion5.length; i++) {
-		console.log("combinacion5 -> " + parseInt(combinacion5[i]))
-	}
-
-	for (var i = 0; i < combinacion6.length; i++) {
-		console.log("combinacion6 -> " + parseInt(combinacion6[i]))
 	}
 }
