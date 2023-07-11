@@ -8,8 +8,23 @@
 	src: url(../FONTS/VarelaRound-Regular.ttf);
 }
 
+@font-face{
+	font-family: 'BrandbeExtraBold';
+	src: url(../FONTS/BrandbeExtraBold.otf);
+}
+
+@font-face{
+	font-family: 'JetBrainsMono-SemiBold';
+	src: url(../FONTS/JetBrainsMono-SemiBold.ttf);
+}
+
+@font-face{
+	font-family: '8bit';
+	src: url(../FONTS/8bit.ttf);
+}
+
 * {
-	font-family: 'VarelaRound-Regular';
+	font-family: 'JetBrainsMono-SemiBold';
 }
 
 body {
@@ -47,12 +62,12 @@ body {
 
 .card {
 	/*FUNCTIONALITY*/
-	height: 300px;
+	height: 286px;
 	width: 538px;
-
 	border-radius: 20px;
-/*	background: #303134;*/
-	background: hsl(0, 0%, 20%);
+	box-shadow: 2px 2px 8px rgba(93, 93, 93, 1);
+
+	background: rgba(51, 51, 51, 1);
 	overflow: hidden;
 }
 
@@ -67,7 +82,7 @@ body {
 	border-bottom: 1px solid #2d4154;
 	background-color: #34495E;
 
-	margin-left: 0%;
 	margin-right: 15px;
 	text-align: center;
+
 }
